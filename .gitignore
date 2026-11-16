@@ -1,0 +1,28 @@
+# Compiled firmware / PlatformIO
+.pio/
+.vscode/
+*.bin
+*.elf
+*.hex
+
+# KiCad backups and autosaves
+*-bak
+*.kicad_pcb-bak
+*.kicad_sch-bak
+_autosave-*
+*.lck
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Wi-Fi password and pairing key
+firmware/include/config_local.h
+
+# KiCad local history and fabrication scratch
+pcb/.history/
+pcb/gerbers/
+
+# FreeCAD backups
+*.FCBak

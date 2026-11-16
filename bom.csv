@@ -1,0 +1,31 @@
+Item,Reference,Part number / specs,Quantity,Unit price (USD),Total (USD),Order,Link,Notes
+ESP32-S3 module,U1,ESP32-S3-WROOM-1-N16R8 (16 MB flash / 8 MB PSRAM / PCB antenna),2,5.40,10.80,JLCPCB assembly,https://www.lcsc.com/product-detail/C2913202.html,Bare module on my own PCB. Quantity 2 because JLCPCB assembles a minimum of 2 boards
+I2S MEMS microphone,MK1 MK2,TDK ICS-43434 (bottom port),4,4.35,17.40,JLCPCB assembly,https://www.lcsc.com/product-detail/C5656610.html,2 per board
+I2S speaker amplifier,U4,MAX98357AETE+T (TQFN-16),2,1.50,3.00,JLCPCB assembly,https://www.lcsc.com/product-detail/C910544.html,
+Haptic driver,U5,DRV2605LDGSR (VSSOP-10),2,1.51,3.02,JLCPCB assembly,https://www.lcsc.com/product-detail/Motor-Driver-ICs_Texas-Instruments-DRV2605LDGSR_C527464.html,
+Li-Po charger,U2,TP4056 (ESOP-8),2,0.25,0.50,JLCPCB assembly,https://www.lcsc.com/product-detail/C16581.html,
+3.3 V regulator,U3,AP2112K-3.3TRG1 (SOT-23-5 / 600 mA),2,0.30,0.60,JLCPCB assembly,https://www.lcsc.com/search?q=AP2112K-3.3TRG1,
+USB ESD protection,U6,USBLC6-2SC6 (SOT-23-6),2,0.30,0.60,JLCPCB assembly,https://www.lcsc.com/search?q=USBLC6-2SC6,
+Backlight MOSFET,Q1,AO3400A (SOT-23),2,0.10,0.20,JLCPCB assembly,https://www.lcsc.com/search?q=AO3400A,
+Display FPC connector,J1,Hirose FH12-40S-0.5SH(55) (40 pin / 0.5 mm / bottom contact),2,0.73,1.46,JLCPCB assembly,https://www.lcsc.com/product-detail/C202114.html,
+Side button,SW1,Omron B3U-3000P (side actuated),2,0.50,1.00,JLCPCB assembly,https://www.lcsc.com/product-detail/C963349.html,Also the BOOT button
+Power slide switch,SW3,C&K PCM12SMTR,2,1.78,3.56,JLCPCB assembly,https://jlcpcb.com/partdetail/ck-PCM12SMTR/C221841,
+Resistors / capacitors / LEDs,R1-R20 C1-C17 D1 D2,0603 parts (one 0805 capacitor): values are in the schematic,2,1.00,2.00,JLCPCB assembly,https://jlcpcb.com/parts,Price is per board set
+4-layer PCB,-,71 x 40 mm / 1.6 mm / HASL / 5 pieces (minimum order),1,10.00,10.00,JLCPCB,https://jlcpcb.com/,Estimate; upload pcb/gerbers.zip for the real price
+Assembly setup + stencil,-,JLCPCB economic assembly / bottom side,1,9.71,9.71,JLCPCB assembly,https://jlcpcb.com/help/article/pcb-assembly-price,Needed because the microphones (LGA) and amplifier (TQFN) cannot be soldered with an iron
+Extended part fees,-,about 12 part types that JLCPCB loads by hand at 3.07 each,12,3.07,36.84,JLCPCB assembly,https://jlcpcb.com/help/article/pcb-assembly-price,Estimate; the quote shows the exact count
+Placement fee,-,solder joints on 2 boards,1,1.00,1.00,JLCPCB assembly,https://jlcpcb.com/help/article/pcb-assembly-price,Estimate
+JLCPCB shipping,-,courier to my address,1,20.00,20.00,JLCPCB,https://jlcpcb.com/,Estimate; shown at checkout
+2.4 inch IPS touch display,-,Newhaven NHD-2.4-240320AF-CSXP-CTP (240x320 ST7789 SPI + FT5426 touch),1,27.46,27.46,DigiKey,https://www.digikey.com/en/products/detail/newhaven-display-intl/NHD-2-4-240320AF-CSXP-CTP/22204984,Chosen because the full FPC pinout and drawing are published
+Touch FFC connector,J2,Molex 200528-0060 (6 pin / 1.0 mm / bottom contact),1,1.04,1.04,DigiKey,https://www.digikey.com/en/products/result?keywords=2005280060,Hand soldered (1.0 mm pitch)
+DigiKey shipping,-,delivery charge for a small order,1,14.00,14.00,DigiKey,https://www.digikey.in/,Flat charge on orders under the free-delivery limit
+Import duty and tax,-,customs on the JLCPCB and DigiKey parcels,1,25.00,25.00,-,https://www.digikey.in/,Estimate (about 20 % of goods); both ship duty unpaid
+Li-Po battery,-,503450 3.7 V 1000 mAh with protection board and wire leads,1,6.00,6.00,AliExpress,https://www.aliexpress.com/w/wholesale-503450-1000mah-lipo-battery.html,Estimate incl. shipping. Must have a protection board (PCM)
+Speaker,-,1511 box speaker 8 ohm 1 W with leads,1,2.00,2.00,AliExpress,https://www.aliexpress.com/w/wholesale-1511-speaker-8ohm-1w.html,Estimate incl. shipping
+Vibration motor,-,LRA coin linear resonant actuator 10 mm (1036),1,2.50,2.50,AliExpress,https://www.aliexpress.com/w/wholesale-LRA-1036-linear-vibration-motor.html,Estimate incl. shipping
+Magnetic dock connector,-,4 pin magnetic pogo connector pair 2.54 mm pitch with USB cable,1,4.00,4.00,AliExpress,https://www.aliexpress.com/w/wholesale-4pin-magnetic-pogo-pin-connector-usb.html,Estimate incl. shipping
+Soldering iron kit,-,60 W adjustable iron + solder,1,14.50,14.50,Amazon,https://www.amazon.com/dp/B07S61WT16,For the touch connector and the battery / speaker / motor / dock wires
+Watch strap,-,22 mm quick-release silicone strap with spring bars,1,3.00,3.00,AliExpress,https://www.aliexpress.com/w/wholesale-22mm-quick-release-silicone-watch-strap.html,Estimate incl. shipping. Spring bars go through the 1.1 mm lug holes
+Case screws,-,M2 x 12 self-tapping screws (pan head) pack,1,1.50,1.50,AliExpress,https://www.aliexpress.com/w/wholesale-m2-x-12-self-tapping-screw.html,4 needed: back shell into front frame
+Foam tape,-,0.5 mm double-sided foam tape,1,1.50,1.50,AliExpress,https://www.aliexpress.com/w/wholesale-0.5mm-double-sided-foam-tape.html,Holds the display on the PCB and seals the two microphone holes
+3D printing filament,-,PETG for the case (front frame / back shell / button cap),0,0.00,0.00,-,-,Printed on a printer I can already use

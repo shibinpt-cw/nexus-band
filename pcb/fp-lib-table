@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "nexus_band")(type "KiCad")(uri "${KIPRJMOD}/nexus_band.pretty")(options "")(descr "Wire pads for the Nexus Band mainboard"))
+)
