@@ -146,6 +146,42 @@ To flash it:
 
 The firmware compiles with `pio run` and takes about 1 MB of the 16 MB flash. It has not run on hardware yet, because the board is not built.
 
+## Building one
+
+Nobody has built this watch yet, including me, so treat these steps as the plan. I will correct them after my own build.
+
+### 1. Order the board
+
+Upload three files from [`pcb/`](pcb) to JLCPCB: `gerbers.zip` for the board, `jlcpcb_bom.csv` for the parts and `jlcpcb_cpl.csv` for the part positions. Choose 4 layers, 1.6 mm, HASL, and assembly on the bottom side. Check the part rotations in JLCPCB's preview before paying, because their rotation convention sometimes differs from KiCad's.
+
+The factory fits every part on the board except the 6-pin touch connector, J2. That one comes from DigiKey and has a 1.0 mm pitch, so a normal soldering iron can do it.
+
+### 2. Order the rest
+
+[`bom.csv`](bom.csv) lists everything else with a link: the display, touch connector, speaker, vibration motor and magnetic connector from DigiKey, the battery, a 22 mm strap, four M2 x 12 screws and 0.5 mm foam tape. The battery must have its own protection board, because the PCB does not have one.
+
+### 3. Print the case
+
+Print `front_frame.step`, `back_shell.step` and `button_cap.step` from [`cad/`](cad) in PETG with 0.2 mm layers and no supports. The front frame prints face down and the back shell prints floor down. Measure the magnetic connector first. The pocket for it is 13.5 x 5 mm, and if your connector is a different size you can change the pocket in `nexus_band_case.FCStd`.
+
+### 4. Solder the wires
+
+Solder the touch connector J2 to the board. Then solder wires to the labelled pads on the back: the battery to B+ and B-, the speaker to S+ and S-, the motor to M+ and M-, and the magnetic connector to the four dock pads marked 5V, D-, D+ and GND. Fit the other half of the magnetic connector to a cut USB cable with the same four wires. Leave the power switch off while you solder the battery.
+
+### 5. Test before closing the case
+
+Plug in the dock cable. The red LED means charging and the green LED means full. Switch the watch on and flash the firmware (see [Firmware](#firmware)). Check the screen, touch, both microphones, the speaker and the buzz before the board goes into the case.
+
+### 6. Assemble
+
+1. Stick 0.5 mm foam tape on the front of the PCB, with small rings around the two microphone holes.
+2. Lay the display face down in the front frame. Fold its two flex tails through the slot and the notch in the PCB, and lock them into J1 and J2 on the back.
+3. Lower the PCB into its pocket in the front frame.
+4. Put the speaker on its four pads in the back shell with the sound side down, press the motor into its ring, glue the magnetic connector into its pocket, and lay the battery in the middle.
+5. Drop the button cap into its slot on the bottom edge.
+6. Close the back shell over the front frame and fit the four screws.
+7. Click the strap's spring bars into the lugs.
+
 ## Repository
 
 ```
@@ -156,7 +192,9 @@ nexus-band/
 │   ├── nexus_band.kicad_pro / .kicad_sch / .kicad_pcb / .kicad_prl
 │   ├── nexus_band.pretty/   footprints for the wire pads
 │   ├── gerbers.zip          fabrication files (gerbers + drill)
-│   └── nexus_band-pos.csv   pick-and-place positions
+│   ├── jlcpcb_bom.csv       parts list in JLCPCB's format, with LCSC numbers
+│   ├── jlcpcb_cpl.csv       part positions in JLCPCB's format
+│   └── nexus_band-pos.csv   pick-and-place positions as KiCad exports them
 ├── cad/                     case parts (STEP), FreeCAD source, PCB and assembly models
 ├── firmware/                ESP32-S3 firmware (PlatformIO)
 └── docs/                    schematic PDF, renders, ERC / DRC reports
@@ -164,4 +202,4 @@ nexus-band/
 
 ## Bill of materials
 
-The first working watch costs about $224. That pays for a 5-board PCB order with two boards assembled, which is the factory minimum. It also covers the display, battery, speaker, motor, dock connector, strap and case screws, a soldering iron, shipping and import duty. The fees, shipping and duty lines are estimates until I have real quotes. The full list with links is in [`bom.csv`](bom.csv).
+The first working watch costs about $233. That pays for a 5-board PCB order with two boards assembled, which is the factory minimum. It also covers the display, battery, speaker, motor, dock connector, strap and case screws, a soldering iron, shipping and import duty. The JLCPCB fees, shipping and duty lines are estimates until I have real quotes, and so are the strap, screws and foam tape, which are generic parts that any shop sells. The full list with links is in [`bom.csv`](bom.csv).
