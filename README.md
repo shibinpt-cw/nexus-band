@@ -1,16 +1,16 @@
 # Nexus Band
 
-A wrist terminal that controls the AI assistant on my laptop. I hold the side button, say what I want ("open Notepad, type this and send it to..."), and the assistant running on the laptop does it. Anything risky comes back to the watch as an Approve / Reject prompt.
+A watch that controls the AI assistant on my laptop. I hold the side button and say what I want ("open Notepad, type this and send it to..."), and the assistant on the laptop does it. If an action is risky, the watch asks me first with Approve and Reject buttons.
 
-Built for **Hack Club Fallen**.
+I'm building it for Hack Club Fallen.
 
 ![Nexus Band, case assembly](docs/images/case_assembly.png)
 
 ## Why I'm building this
 
-I spend hours at my desk waiting for builds, tests and scripts. The moment I get up, the laptop stops and waits for me to press Enter or approve something. Normal smartwatches only show notifications; they can't run real commands on my computer.
+I spend hours at my desk waiting for builds, tests and scripts. When I get up, the laptop sits there until I come back to press Enter or approve something. A normal smartwatch only shows notifications, so it can't help with that.
 
-Nexus Band is a remote for my own assistant (ATS 10, a Python program on the laptop). The two talk over the local Wi-Fi, so I can walk around the room and still tell the laptop what to do, see what it is doing, and approve or reject actions from my wrist.
+Nexus Band is a remote for my own assistant, ATS 10, a Python program that runs on the laptop. The watch and the laptop talk over my Wi-Fi. I can walk around the room, tell the laptop what to do, see what it is doing, and approve or reject its actions from my wrist.
 
 ## How the watch and the laptop work together
 
@@ -33,7 +33,7 @@ The watch uses the same API as the assistant's phone dashboard:
 
 ## Hardware
 
-Everything is on one 4-layer PCB, 71 x 40 mm, that sits behind the display. All parts are on the back, facing the battery; the front is flat against the display.
+Everything is on one 4-layer PCB, 71 x 40 mm, that sits behind the display. All the parts are on the back, facing the battery, so the front lies flat against the display.
 
 | Block | Part | Notes |
 |---|---|---|
@@ -48,12 +48,15 @@ Everything is on one 4-layer PCB, 71 x 40 mm, that sits behind the display. All 
 
 ### Power and battery life
 
-- **On / off:** the slide switch on the bottom edge turns the 3.3 V regulator on or off. When it is off, only the charger, the battery divider and the sleeping amplifier and haptic driver stay connected (about 15 µA), so a charged cell keeps for months. Charging on the dock works with the switch in either position.
-- **Always on:** the watch is meant to stay switched on and connected all day. The screen turns off after 15 s of no use and comes back on with the side button, a tap, or any message or approval request from the laptop (it also buzzes).
-- **Estimated runtime** on the 1000 mAh cell (not measured yet): about 10 h with the screen on the whole time, roughly a day of normal use with the screen sleeping, so it goes on the dock overnight.
-- **Low battery:** below 3.35 V and off the dock, the firmware puts the ESP32 into deep sleep to protect the cell.
+The slide switch on the bottom edge turns the 3.3 V regulator on and off. With it off, the charger, the battery divider, the amplifier and the haptic driver are still connected, but together they draw about 15 µA, so a charged cell keeps for months. The dock charges the battery with the switch in either position.
 
-Size of the watch body: 85 x 48 mm (99 mm across the strap lugs), 17.5 mm thick (bezel 1.0 + display 4.1 + foam 0.5 + PCB 1.6 + parts 3.5 + battery 5.2 + floor 1.4).
+I plan to leave the watch switched on and connected all day. The screen turns off after 15 s without use. The side button or a tap wakes it, and so does any message or approval request from the laptop, which also makes the watch buzz.
+
+I haven't measured the runtime yet. My estimate for the 1000 mAh cell is about 10 h with the screen on the whole time and about a day of normal use with the screen sleeping, so it will charge on the dock overnight. If the battery falls below 3.35 V off the dock, the firmware puts the ESP32 into deep sleep to protect the cell.
+
+### Size
+
+The watch body is 85 x 48 mm, or 99 mm across the strap lugs, and 17.5 mm thick. The thickness adds up as bezel 1.0 + display 4.1 + foam 0.5 + PCB 1.6 + parts 3.5 + battery 5.2 + floor 1.4.
 
 ### Schematic
 
@@ -73,9 +76,9 @@ PDF: [docs/images/schematic.pdf](docs/images/schematic.pdf)
 
 Layer stack: front signal / ground plane / 3.3 V plane / back signal and parts. The strip under the ESP32 antenna has no copper on any layer.
 
-The slot and the notch on the right are for the display's two flex tails. They fold around the board edge and plug into the connectors on the back. Because of that fold the 40-pin connector is numbered backwards compared with the display (connector pad n = display pin 41 - n); the schematic shows both numbers.
+The slot and the notch on the right are for the display's two flex tails. They fold around the board edge and plug into the connectors on the back. That fold reverses the 40-pin connector's numbering: connector pad n is display pin 41 - n. The schematic shows both numbers.
 
-KiCad's checks on the files in this repo: [ERC report](docs/erc_report.txt) (0 violations), [DRC report](docs/drc_report.txt) (0 violations, 0 unconnected).
+The files in this repo pass KiCad's checks: the [ERC report](docs/erc_report.txt) has 0 violations, and the [DRC report](docs/drc_report.txt) has 0 violations and 0 unconnected pads.
 
 ### Pin map
 
@@ -94,7 +97,7 @@ KiCad's checks on the files in this repo: [ERC report](docs/erc_report.txt) (0 v
 
 ## Case
 
-Three 3D-printed parts (PETG) and a standard 22 mm quick-release strap.
+The case is three parts printed in PETG, and it takes a standard 22 mm quick-release strap.
 
 | Assembled | Exploded |
 |---|---|
@@ -110,28 +113,38 @@ Three 3D-printed parts (PETG) and a standard 22 mm quick-release strap.
 | Back shell | [`cad/back_shell.step`](cad/back_shell.step) | Battery, speaker and motor bay with locating ribs, a ledge that clamps the PCB edge, button and power-switch openings on the bottom edge, the charging connector pocket and four speaker slots on the top edge, the speaker grille and four 22 mm strap lugs |
 | Button cap | [`cad/button_cap.step`](cad/button_cap.step) | Plunger for the side button; its flange sits inside the back shell |
 
-CAD source: [`cad/nexus_band_case.FCStd`](cad/nexus_band_case.FCStd) (FreeCAD 1.1). It also holds the PCB, display, battery, speaker and motor as reference parts. The full assembly as one file: [`cad/nexus_band_assembly.step`](cad/nexus_band_assembly.step).
+The CAD source is [`cad/nexus_band_case.FCStd`](cad/nexus_band_case.FCStd), made in FreeCAD 1.1. It also holds the PCB, display, battery, speaker and motor as reference parts. The whole assembly is in one file, [`cad/nexus_band_assembly.step`](cad/nexus_band_assembly.step).
 
-How it fits together:
+### How it fits together
 
-- The PCB has no mounting holes, so the case clamps it: the board drops into a 1.6 mm pocket in the front frame and the back shell's 0.8 mm ledge presses on its edge. The ledge is cut away where the ESP32 module, touch connector, switches and microphones reach the edge.
-- The display sits face down in the front frame on 0.5 mm foam tape. The window matches its viewing area (49.96 x 37.72 mm), which is 2.5 mm off centre, away from the flex tails.
-- Four M2 x 12 self-tapping screws go through the ends of the back shell into the front frame, outside the board.
-- Battery in the middle, speaker and motor on the left, nothing over the antenna strip. The speaker stands on 1 mm pads so there is an air gap under it; sound leaves through the floor grille, a shallow channel to the edge, and four slots in the top edge, so it can still be heard when the floor is against the wrist.
-- Charging: the magnetic dock connector is glued into the pocket on the top edge, next to the dock pads on the PCB. The cable snaps on from the side; the same connector carries USB for flashing.
-- Strap: any 22 mm quick-release watch strap. Its spring bars click into the 1.1 mm holes in the lugs, no tools needed.
-- The power switch lever sits in a slot on the bottom edge. Slide it with a fingernail or a toothpick.
+The PCB has no mounting holes, so the case clamps it. The board drops into a 1.6 mm pocket in the front frame, and a 0.8 mm ledge on the back shell presses on its edge. The ledge is cut away where the ESP32 module, the touch connector, the switches and the microphones reach the edge.
 
-Print the front frame face down and the back shell floor down, 0.2 mm layers, no supports.
+The display sits face down in the front frame on 0.5 mm foam tape. The window matches its viewing area, 49.96 x 37.72 mm, which sits 2.5 mm off centre, away from the flex tails.
+
+Four M2 x 12 self-tapping screws go through the ends of the back shell into the front frame. They pass outside the board.
+
+The battery is in the middle and the speaker and motor are on the left. Nothing sits over the antenna strip. The speaker stands on 1 mm pads, which leaves an air gap under it. Sound leaves through the floor grille, a shallow channel to the edge, and four slots in the top edge, so it can still be heard when the floor is against the wrist.
+
+The magnetic dock connector is glued into the pocket on the top edge, next to the dock pads on the PCB. The cable snaps on from the side, and the same connector carries USB for flashing.
+
+Any 22 mm quick-release strap fits. Its spring bars click into the 1.1 mm holes in the lugs without tools.
+
+The power switch lever sits in a slot on the bottom edge. It slides with a fingernail or a toothpick.
+
+### Printing
+
+Print the front frame face down and the back shell floor down, with 0.2 mm layers and no supports.
 
 ## Firmware
 
-PlatformIO project in [`firmware/`](firmware). It brings up the display, touch, microphones, speaker and haptics, pairs with the laptop, streams voice while the button is held, and shows the assistant's messages and confirmation prompts.
+The firmware is a PlatformIO project in [`firmware/`](firmware). It starts the display, touch, microphones, speaker and haptics, then pairs with the laptop. While I hold the button it streams my voice, and it shows the assistant's messages and confirmation prompts on the screen.
+
+To flash it:
 
 1. Copy the settings block from `firmware/include/config.h` into a new `firmware/include/config_local.h` and fill in the Wi-Fi name, password, laptop address and the one-time key the laptop shows.
 2. Put the watch on the dock, hold the side button while connecting it the first time, then `pio run -t upload`.
 
-The firmware compiles (`pio run`, about 1 MB of the 16 MB flash) but has not run on hardware yet; the board is not built.
+The firmware compiles with `pio run` and takes about 1 MB of the 16 MB flash. It has not run on hardware yet, because the board is not built.
 
 ## Repository
 
@@ -151,4 +164,4 @@ nexus-band/
 
 ## Bill of materials
 
-About **$224** for the first working watch. That covers a 5-board PCB order with two boards assembled (the factory minimum), the display, battery, speaker, motor, dock connector, strap and case screws, a soldering iron, shipping and import duty. The fees, shipping and duty lines are estimates until the real quotes are in. Full list with links: [`bom.csv`](bom.csv).
+The first working watch costs about $224. That pays for a 5-board PCB order with two boards assembled, which is the factory minimum. It also covers the display, battery, speaker, motor, dock connector, strap and case screws, a soldering iron, shipping and import duty. The fees, shipping and duty lines are estimates until I have real quotes. The full list with links is in [`bom.csv`](bom.csv).
