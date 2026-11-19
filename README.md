@@ -113,6 +113,26 @@ The case is three parts printed in PETG, and it takes a standard 22 mm quick-rel
 | Back shell | [`cad/back_shell.step`](cad/back_shell.step) | Battery, speaker and motor bay with locating ribs, a ledge that clamps the PCB edge, button and power-switch openings on the bottom edge, the charging connector pocket and four speaker slots on the top edge, the speaker grille and four 22 mm strap lugs |
 | Button cap | [`cad/button_cap.step`](cad/button_cap.step) | Plunger for the side button; its flange sits inside the back shell |
 
+### Printed parts
+
+| Front frame, outside | Front frame, inside |
+|---|---|
+| ![Front frame, outside](docs/images/front_frame_outside.png) | ![Front frame, inside](docs/images/front_frame_inside.png) |
+
+| Back shell, inside | Back shell, outside |
+|---|---|
+| ![Back shell, inside](docs/images/back_shell_inside.png) | ![Back shell, outside](docs/images/back_shell_outside.png) |
+
+| Back shell, top edge | Button cap |
+|---|---|
+| ![Back shell, top edge](docs/images/back_shell_top_edge.png) | ![Button cap](docs/images/button_cap.png) |
+
+| Part | Size | PETG |
+|---|---|---|
+| Front frame | 85 x 48 x 7.4 mm | about 13 g |
+| Back shell | 99 x 48 x 10.1 mm (with lugs) | about 20 g |
+| Button cap | 4.6 x 4.8 x 1.5 mm | under 1 g |
+
 The CAD source is [`cad/nexus_band_case.FCStd`](cad/nexus_band_case.FCStd), made in FreeCAD 1.1. It also holds the PCB, display, battery, speaker and motor as reference parts. The whole assembly is in one file, [`cad/nexus_band_assembly.step`](cad/nexus_band_assembly.step).
 
 ### How it fits together
