@@ -222,4 +222,4 @@ nexus-band/
 
 ## Bill of materials
 
-The first working watch costs about $233. That pays for a 5-board PCB order with two boards assembled, which is the factory minimum. It also covers the display, battery, speaker, motor, dock connector, strap and case screws, a soldering iron, shipping and import duty. The JLCPCB fees, shipping and duty lines are estimates until I have real quotes, and so are the strap, screws and foam tape, which are generic parts that any shop sells. The full list with links is in [`bom.csv`](bom.csv).
+The first working watch costs about $252. That pays for a 5-board PCB order with two boards assembled, which is the factory minimum. It also covers the display, battery, speaker, motor, dock connector, strap and case screws, a 1 kg spool of PETG for the case, a soldering iron, shipping and import duty. The JLCPCB fees, shipping and duty lines are estimates until I have real quotes, and so are the strap, screws and foam tape, which are generic parts that any shop sells. The full list with links is in [`bom.csv`](bom.csv).
